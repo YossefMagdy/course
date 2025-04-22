@@ -1,0 +1,13 @@
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+    {
+        path: '',
+        redirectTo: 'Courses',
+        pathMatch: 'full'
+    },
+    {
+        path:'Courses',
+        loadComponent: () => import('./core/components/course-table/course-table.component').then(m => m.CourseTableComponent)
+    }
+];

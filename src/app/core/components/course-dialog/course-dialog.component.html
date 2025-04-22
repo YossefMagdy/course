@@ -1,0 +1,56 @@
+<p-dialog header="Add subcourses" [modal]="true" [(visible)]="visible" [draggable]="false" [resizable]="false"
+    (onHide)="onHide()" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+    [maximizable]="true">
+    <form [formGroup]="form" class="flex flex-col gap-6" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="username" class="font-semibold w-24">Name</label>
+            <div class="flex-1 mt-2">
+                <input pInputText id="username" pSize="large" class="ng-invalid ng-dirty w-full" placeholder="Name"
+                    autocomplete="off" formControlName="name"
+                    [ngClass]="{'ng-invalid ng-dirty':nameControl()?.errors?.['required'] && nameControl()?.touched}" />
+                @if (nameControl()?.errors?.['required'] && nameControl()?.touched) {
+                <div class="text-red-500 text-sm mt-1">
+                    Name is required.
+                </div>
+                }
+
+            </div>
+        </div>
+        <div>
+            <label for="startDate" class="font-semibold w-24">Start date</label>
+            <div class="mt-2">
+                <p-datepicker id="startDate" [style]="{'width':'100%'}"
+                    [minDate]="activeParentCourse() ?  activeParentCourse()?.startDate : null" size="large"
+                    appendTo="body" [iconDisplay]="'input'" formControlName="startDate" placeholder="Start date"
+                    [ngClass]="{'ng-invalid ng-dirty':startDateControl()?.errors?.['required'] && startDateControl()?.touched }"
+                    [showIcon]="true" inputId="icondisplay" />
+                @if (startDateControl()?.errors?.['required'] && startDateControl()?.touched) {
+                <div class="text-red-500 text-sm mt-1">
+                    Start date is required.
+                </div>
+                }
+            </div>
+        </div>
+        <div>
+            <label for="endDate" class="font-semibold w-24">End date</label>
+            <div class="mt-2">
+                <p-datepicker id="endDate" [minDate]="startDateControl()?.value"
+                     appendTo="body" size="large"
+                    [style]="{'width':'100%'}" formControlName="endDate" [iconDisplay]="'input'"
+                    [ngClass]="{'ng-invalid ng-dirty':endDateControl()?.errors?.['required'] && endDateControl()?.touched }"
+                    placeholder="End date" [showIcon]="true" inputId="icondisplay" />
+                @if (endDateControl()?.errors?.['required'] && endDateControl()?.touched) {
+                <div class="text-red-500 text-sm mt-1">
+                    End date is required.
+                </div>
+                }
+            </div>
+        </div>
+        <div class="flex justify-end gap-2">
+            <p-button label="Cancel" severity="secondary" (click)="closeDialog()" />
+            <div>
+                <p-button label="Save" type="submit" />
+            </div>
+        </div>
+    </form>
+</p-dialog>
