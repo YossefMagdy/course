@@ -65,7 +65,7 @@ export class CourseService {
   onEditParentObject(courseObject: Course) {
     this.#availableCourses.update((courses) => {
       return courses.map((course) => {
-        if (course.id === course.id) {
+        if (courseObject.id === course.id) {
           return {
             ...courseObject,
             subcourses: [...(course.subcourses || [])],
