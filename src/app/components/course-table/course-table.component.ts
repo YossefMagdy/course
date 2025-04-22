@@ -1,4 +1,3 @@
-import { Subcourse } from './../../interface/Subcourse.interface';
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
@@ -8,6 +7,7 @@ import { CourseDialogComponent } from '../course-dialog/course-dialog.component'
 import { CourseService } from '@Course/core/service/course.service';
 import { DatePipe } from '@angular/common';
 import { Course } from '@Course/core/interface/course.interface';
+import { Subcourse } from '@Course/core/interface/Subcourse.interface';
 
 @Component({
   selector: 'app-course-table',

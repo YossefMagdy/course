@@ -8,6 +8,6 @@ export const routes: Routes = [
     },
     {
         path:'Courses',
-        loadComponent: () => import('./core/components/course-table/course-table.component').then(m => m.CourseTableComponent)
+        loadComponent: () => import('./components/course-table/course-table.component').then(m => m.CourseTableComponent)
     }
 ];
